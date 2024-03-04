@@ -14,8 +14,8 @@ public class ReverseTest {
 
     @Test
     public void reverseWorks() {
-        Assertions.assertTrue(Arrays.equals(new int[] {1}, reverse(new int[] {1})));
-        Assertions.assertTrue(Arrays.equals(new int[] {5, 4, 3, 2, 1}, reverse(new int[] {1, 2, 3, 4, 5})));
+        Assertions.assertArrayEquals(new int[]{1}, reverse(new int[]{1}));
+        Assertions.assertArrayEquals(new int[]{5, 4, 3, 2, 1}, reverse(new int[]{1, 2, 3, 4, 5}));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class ReverseTest {
 
         int[] reversed = reverse(input);
 
-        Assertions.assertTrue(Arrays.equals(new int[] {5, 4, 3, 2, 1}, reversed));
-        Assertions.assertTrue(Arrays.equals(copy, input));
+        Assertions.assertArrayEquals(new int[]{5, 4, 3, 2, 1}, reversed);
+        Assertions.assertArrayEquals(copy, input);
     }
 }

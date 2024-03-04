@@ -13,8 +13,8 @@ public class SortTest {
 
     @Test
     public void sortWorks() {
-        Assertions.assertTrue(Arrays.equals(new int[] {1}, sort(new int[] {1})));
-        Assertions.assertTrue(Arrays.equals(new int[] {1, 2, 3, 4, 5}, sort(new int[] {5, 4, 3, 2, 1})));
+        Assertions.assertArrayEquals(new int[]{1}, sort(new int[]{1}));
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, sort(new int[]{5, 4, 3, 2, 1}));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class SortTest {
 
         int[] sorted = sort(input);
 
-        Assertions.assertTrue(Arrays.equals(new int[] {1, 3, 9, 11, 45, 499}, sorted));
-        Assertions.assertTrue(Arrays.equals(copy, input));
+        Assertions.assertArrayEquals(new int[]{1, 3, 9, 11, 45, 499}, sorted);
+        Assertions.assertArrayEquals(copy, input);
     }
 }
