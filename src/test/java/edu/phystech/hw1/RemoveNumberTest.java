@@ -14,7 +14,7 @@ public class RemoveNumberTest {
     @Test
     public void removeElement() {
         Assertions.assertArrayEquals(new int[]{1}, removeElement(new int[]{1, 2}, 2));
-        Assertions.assertArrayEquals(new int[]{1}, removeElement(new int[]{1}, 1));
+        Assertions.assertArrayEquals(new int[]{}, removeElement(new int[]{1}, 1));
     }
 
     @Test
