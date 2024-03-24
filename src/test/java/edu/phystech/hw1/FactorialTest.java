@@ -9,8 +9,14 @@ public class FactorialTest {
 
 
     private static long factorial(int n) {
-        return 0;
-    }
+         private static long factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+     }
+
 
     @Test
     public void smallNumbersTest() {
