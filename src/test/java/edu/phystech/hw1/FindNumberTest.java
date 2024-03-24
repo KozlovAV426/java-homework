@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class FindNumberTest {
+    
     private static int findNumber(int[] input, int element) {
         int low = 0;
         int high = input.length - 1;
