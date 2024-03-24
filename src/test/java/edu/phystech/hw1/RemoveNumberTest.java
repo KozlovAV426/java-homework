@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class RemoveNumberTest {
+    
     private static int[] removeElement(int[] input, int element) {
         int count = 0;
         for (int i = 0; i < input.length; i++) {
