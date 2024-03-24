@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Assertions;
 public class NumberPresentationTest {
 
     private static String toBinary(int x) {
-        return "";
+        return Integer.toBinaryString(x);
     }
 
     private static String toOct(int x) {
-        return "";
+        return Integer.toOctalString(x);
     }
 
     private static String toHex(int x) {
-        return "";
+        return Integer.toHexString(x);
     }
 
     @Test
