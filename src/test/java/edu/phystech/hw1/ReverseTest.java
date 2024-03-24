@@ -6,11 +6,13 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class ReverseTest {
-
     private static int[] reverse(int[] nums) {
-        return nums;
+        int[] reversed = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            reversed[i] = nums[nums.length - 1 - i];
+        }
+        return reversed;
     }
-
 
     @Test
     public void reverseWorks() {
