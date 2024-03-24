@@ -6,11 +6,24 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class RemoveNumberTest {
-
     private static int[] removeElement(int[] input, int element) {
-        return input;
+        int count = 0;
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] == element) {
+                count++;
+            }
+        }
+        int[] result = new int[input.length - count];
+        int index = 0;
+        
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] != element) {
+                result[index] = input[i];
+                index++;
+            }
+        }
+        return result;
     }
-
     @Test
     public void removeElement() {
         Assertions.assertArrayEquals(new int[]{1}, removeElement(new int[]{1, 2}, 2));
