@@ -13,8 +13,8 @@ public class ContactTest {
     public void justWorks() {
 
         Assertions.assertDoesNotThrow(() -> {
-            Contact first = new Contact("username", "username@gmai.com");
-            Contact second = new Contact("123", "123@gmai.com");
+            Contact first = new Contact("username", "username@gmail.com");
+            Contact second = new Contact("123", "123@gmail.com");
 
             Contact withoutEmail = new Contact("withoutEmail");
             Assertions.assertEquals(Contact.UNKNOWN_EMAIL, withoutEmail.email());
