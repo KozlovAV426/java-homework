@@ -8,6 +8,15 @@ import org.junit.jupiter.api.Assertions;
 public class SortTest {
 
     private static int[] sort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for(int j = 0; j < nums.length - i - 1; j++) {
+                if(nums[j + 1] < nums[j]) {
+                    int swap = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = swap;
+                }
+            }
+        }
         return nums;
     }
 
