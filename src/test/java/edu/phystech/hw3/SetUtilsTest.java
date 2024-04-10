@@ -51,12 +51,12 @@ public class SetUtilsTest {
         firstSet = Set.of(1, 2);
         secondSet = Set.of(2, 1);
 
-        Assertions.assertEquals(Collections.emptySet(), SetUtils.intersection(firstSet, secondSet));
+        Assertions.assertEquals(Collections.emptySet(), SetUtils.difference(firstSet, secondSet));
 
         firstSet = Set.of(1);
         secondSet = Set.of(1, 2, 3);
 
-        Assertions.assertEquals(Collections.emptySet(), SetUtils.intersection(firstSet, secondSet));
+        Assertions.assertEquals(Collections.emptySet(), SetUtils.difference(firstSet, secondSet));
 
         firstSet = Set.of(1, 2);
         secondSet = Set.of(2, 3);
