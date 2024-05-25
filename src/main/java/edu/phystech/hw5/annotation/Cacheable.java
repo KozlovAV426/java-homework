@@ -1,12 +1,12 @@
 package edu.phystech.hw5.annotation;
 
-import java.lang.annotation.ElementType;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
 
-/**
- * @author kzlv4natoly
- */
 
+@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Cacheable {
 }
