@@ -1,8 +1,9 @@
 package edu.phystech.hw5.annotation.validation;
 
-/**
- * @author kzlv4natoly
- */
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Size {
     int min() default 1;
     int max();
