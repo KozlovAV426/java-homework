@@ -15,24 +15,25 @@ import org.junit.jupiter.api.Assertions;
 class ToUpperCaseOperator implements UnaryOperator<String> {
     @Override
     public String apply(String s) {
-        return s;
+        return s.toUpperCase();
     }
 }
 
 // Возвращает модуль максимума из двух модулей чисел
 class AbsMaxOperator implements BinaryOperator<Integer> {
-
-    @Override
-    public Integer apply(Integer integer, Integer integer2) {
-        return 0;
+    @Override 
+    public Integer apply(Integer integer, Integer integer2) { 
+        int abs1 = Math.abs(integer); 
+        int abs2 = Math.abs(integer2);
+        return Math.max(abs1, abs2);
     }
 }
 
 class StringLengthMoreThan5 implements Predicate<String> {
 
-    @Override
-    public boolean test(String s) {
-        return true;
+    @Override 
+    public boolean test(String s) { 
+        return s.length() > 5; 
     }
 }
 
@@ -40,22 +41,36 @@ class StringLengthMoreThan5 implements Predicate<String> {
 // Проверяет, является ли число квадратом
 class IsNumberASquareOfAnotherNumber implements Predicate<Integer> {
 
-    @Override
-    public boolean test(Integer integer) {
-        return true;
-    }
+    @Override 
+    public boolean test(Integer integer) { 
+        for (int i = 1; i <= integer; i++) { 
+            if (i * i == integer) { 
+                return true; }
+            } return false; 
+        }
 }
 
 // Возвращает четные числа, начиная с from включительно, если в from нечетное число, то начиная с первого четного с from
 class EvenNumberSupplier implements Supplier<Integer> {
+    private int currentNumber;
 
-    public EvenNumberSupplier(int from) {}
-
+    public EvenNumberSupplier(int from) {
+        if (from % 2 != 0) {
+            this.currentNumber = from + 1;
+        } else {
+            this.currentNumber = from;
+        }
+    }
+    
     @Override
     public Integer get() {
-        return 0;
+        int result = currentNumber;
+        currentNumber += 2;
+        return result;
     }
 }
+    
+
 
 public class FunctionalInterfacesTest {
 
