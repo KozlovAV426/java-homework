@@ -9,25 +9,58 @@ class IntHolder {
 
     private int value;
 
-    public int getValue() {
-        return 0;
+    public IntHolder(int value) {
+        this.value = value;
     }
 
-    public void swap(IntHolder other) {}
+    public static IntHolder valueOf(int x) {
+        return new IntHolder(x);
+    }
 
-    public IntHolder(int value) {}
+    public int getValue() {
+        return value;
+    }
 
-    public static IntHolder valueOf(int x) { return null; }
+    public void swap(IntHolder other) {
+        int temp = this.value;
+        this.value = other.getValue();
+        other.value = temp;
+    }
 
-    public IntHolder plus(IntHolder rhv) { return null; }
+    public IntHolder plus(IntHolder rhv) {
+        return new IntHolder(this.value + rhv.getValue());
+    }
 
-    public IntHolder minus(IntHolder rhv) { return null; }
+    public IntHolder minus(IntHolder rhv) {
+        return new IntHolder(this.value - rhv.getValue());
+    }
 
-    public IntHolder times(IntHolder rhv) { return null; }
-    public IntHolder div(IntHolder rhv) { return null; }
+    public IntHolder times(IntHolder rhv) {
+        return new IntHolder(this.value * rhv.getValue());
+    }
 
+    public IntHolder div(IntHolder rhv) {
+        if (rhv.getValue() != 0) {
+            return new IntHolder(this.value / rhv.getValue());
+        } else {
+            System.out.println("Division by zero error");
+            return null;
+        }
+    }
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        IntHolder intHolder = (IntHolder) obj;
+        return value == intHolder.value;
+    }
+    public int hashCode() {
+        return Objects.hash(value);
+    }
 }
-
 public class IntHolderTest {
 
     @Test
@@ -71,3 +104,4 @@ public class IntHolderTest {
     }
 
 }
+
