@@ -1,15 +1,37 @@
 package edu.phystech.hw2.contact;
 
+import java.util.regex.Pattern;
 
-record Contact(String username, String email) {
+public record Contact(String username, String email) implements Comparable<Contact>{
+
+ 
     public static final String UNKNOWN_EMAIL = "unknown";
-
-    Contact {
-        // здесь должна быть валидация
+    
+    public Contact {
+        if (username.isBlank()) {
+            throw new InvalidContactFieldException("username");
+        }
+        if (email != null && !email.isBlank()) {
+            if (!Pattern.matches(".+@gmail\\.com", email)) {
+                throw new InvalidContactFieldException("email");
+            }
+        } else {
+            email = UNKNOWN_EMAIL;
+        }
     }
-
-    Contact(String username) { this(null, null); }
-
-
-    public int compareTo(Contact o) {return 0;}
+    
+    public Contact(String username) {
+        this(username, null);
+    }
+    @Override
+    public int compareTo(Contact o) {
+        if (this.username.length() < o.username.length()) {
+            return -1; 
+        } else if (this.username.length() > o.username.length()) {
+            return 1; 
+        } else {
+            return this.username.compareTo(o.username); 
+    }
+    
+ }
 }
