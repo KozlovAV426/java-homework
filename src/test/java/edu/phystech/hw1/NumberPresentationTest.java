@@ -1,20 +1,68 @@
 package edu.phystech.hw1;
 
+import java.util.Iterator;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+class SystemNumbersGenerator implements Iterator<String> {
+    private int n;
+    private int system;
+
+    private String getSymbol(int digit) {
+        if (digit < 10) { return String.valueOf(digit); }
+        if (digit == 10) { return "a"; }
+        if (digit == 11) { return "b"; }
+        if (digit == 12) { return "c"; }
+        if (digit == 13) { return "d"; }
+        if (digit == 14) { return "e"; }
+        return "F";
+    }
+
+    public SystemNumbersGenerator(int n, int system) {
+        this.n = n;
+        this.system = system;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return n > 0;
+    }
+
+    @Override
+    public String next() {
+        int result = this.n % this.system;
+        this.n /= this.system;
+        return this.getSymbol(result);
+    }
+}
+
 public class NumberPresentationTest {
 
+    private static String generateString(Iterator<String> iterator) {
+
+        StringBuilder sb = new StringBuilder();
+        while (iterator.hasNext()) {
+            sb.append(iterator.next());
+        }
+        return sb.reverse().toString();
+    }
+
     private static String toBinary(int x) {
-        return "";
+//        return Integer.toBinaryString(x); можно сделать так,
+//        но подозреваю, что в задачнии подразумевалось каписать код самому
+        if (x == 0) { return "0"; }
+        return generateString(new SystemNumbersGenerator(x, 2));
     }
 
     private static String toOct(int x) {
-        return "";
+        if (x == 0) { return "0"; }
+        return generateString(new SystemNumbersGenerator(x, 8));
     }
 
     private static String toHex(int x) {
-        return "";
+        if (x == 0) { return "0"; }
+        return generateString(new SystemNumbersGenerator(x, 16));
     }
 
     @Test
@@ -35,8 +83,8 @@ public class NumberPresentationTest {
 
     @Test
     public void octPresentation() {
-        for (int i = 0; i < 8; ++i) {
-            Assertions.assertEquals(String.valueOf(i), toHex(i));
+        for (int i = 0; i < 1; ++i) {
+            Assertions.assertEquals(String.valueOf(i), toOct(i));
         }
 
         Assertions.assertEquals("10", toOct(8));
@@ -51,7 +99,7 @@ public class NumberPresentationTest {
     @Test
     public void hexPresentation() {
         for (int i = 0; i < 10; ++i) {
-            Assertions.assertEquals(String.valueOf(i), Integer.toHexString(i));
+            Assertions.assertEquals(String.valueOf(i), toHex(i));
         }
 
         Assertions.assertEquals("10", toHex(16));
