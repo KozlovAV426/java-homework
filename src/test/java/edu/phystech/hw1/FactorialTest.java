@@ -9,7 +9,11 @@ public class FactorialTest {
 
 
     private static long factorial(int n) {
-        return 0;
+        long res = 1;
+        for (int i = 1; i <= n; i++) {
+            res *= i;
+        }
+        return res;
     }
 
     @Test
